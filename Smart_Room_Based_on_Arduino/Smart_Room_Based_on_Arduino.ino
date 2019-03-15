@@ -105,7 +105,6 @@ void loop() {
         if ( successRead == true) {
           for (int i = 0; i < 100; i++) {
             if (tagID == myTags[0]) {
-              myTags[i] = "";
               lcd.clear();
               lcd.setCursor(0, 0);
               lcd.print("You can't remove");
