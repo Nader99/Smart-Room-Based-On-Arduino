@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Teacher Management System</title>
+  <link rel="stylesheet" href="css/style.css">  
+</head>
+<body>
+    <?php
+        require_once('./db_connection.php');
+		
+        ?>
+ <div id="main_page">
+     <div id="con">
+     <div id="header">
+     <h1>Teacher Management System</h1>
+     </div>
+     <div id="content">
+         
+         <button id="add"><a href="add_page"><span>Add teacher</span></a></button><br><br>
+         <button id="delete"><a href="delete_page"><span>Delete teacher</span></a></button><br><br>
+         <button id="view"><a href="view_page"><span>View all teachers</span></a></button><br><br>
+         <button id="signout"><a href="login_page"><span>Sign out</span></a></button>
+         </div>
+         </div>
+  </div>
+    
+</body>
+
+
+
+</html>
