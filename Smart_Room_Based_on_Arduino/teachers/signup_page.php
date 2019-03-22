@@ -63,8 +63,8 @@ function test_input($data) {
   <title>Teacher Management System</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
-.error {color: #FF0000;
-  margin-left: 270px;
+.error {
+  color: #FF0000;
 }
 </style> 
 </head>
@@ -77,15 +77,15 @@ function test_input($data) {
      </div>
      <div id="content">
      <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
-        <h3 style="display:inline;margin-left: 270px;">Name</h2>
-        <input style="margin-left: 270px;" type="text" name="name"><span class="error">*<?phpecho $nameErr;?></span><br>
-        <h3 style="display:inline;margin-left: 270px;">Username</h2>
-        <input style="margin-left: 270px;" type="text" name="username"><span class="error">*<?php echo $userErr;?></span><br>
-        <h3 style="display:inline;margin-left: 270px;">Password</h2>
-        <input style="margin-left: 270px;" type="password" name="password"><span class="error">*<?php echo $passErr;?></span><br>
-        <h3 style="display:inline;margin-left: 270px;">Email</h2>
-        <input style="margin-left: 270px;" type="email" name="email"><span class="error">*<?php echo $emailErr;?></span><br><br>
-        <button type="submit" style="width:120px;height:40px;margin-left:340px;" >Sign up</button>
+        <h3 style="display:inline;margin-left: 60px;">Name</h2>
+        <input style="margin-left: 30px;" type="text" name="name"><span class="error">*<?phpecho $nameErr;?></span><br>
+        <h3 style="display:inline;margin-left: 60px;">Username</h2>
+        <input style="margin-left: 30px;" type="text" name="username"><span class="error">*<?php echo $userErr;?></span><br>
+        <h3 style="display:inline;margin-left: 60px;">Password</h2>
+        <input style="margin-left: 30px;" type="password" name="password"><span class="error">*<?php echo $passErr;?></span><br>
+        <h3 style="display:inline;margin-left: 60px;">Email</h2>
+        <input style="margin-left: 30px;" type="email" name="email"><span class="error">*<?php echo $emailErr;?></span><br><br>
+        <button type="submit" style="width:120px;height:40px;margin-left:60px;" >Sign up</button>
 
     </form>
 
