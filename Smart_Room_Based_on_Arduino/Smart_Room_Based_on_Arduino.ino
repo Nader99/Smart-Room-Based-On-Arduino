@@ -24,7 +24,8 @@ int BUZZER=4;
 int threshold=200;
 int firevalue=0;
 int num = 0;
-
+int inPin = 11;   
+int btnVal = 0;
 
 DS3231 rtc(SDA, SCL);
 MFRC522 mfrc522(SS_PIN, RST_PIN);
@@ -40,7 +41,8 @@ void setup() {
   digitalWrite(Fan,LOW);
   pinMode(LED,OUTPUT);
   pinMode(FLAME,INPUT);
-  pinMode(BUZZER,OUTPUT); 
+  pinMode(BUZZER,OUTPUT);
+  pinMode(inPin, INPUT);
   SPI.begin();  
   mfrc522.PCD_Init(); 
   lcd.begin(16, 2); 
@@ -71,8 +73,15 @@ void loop() {
         alarmBell();
         fireDetector();
         detection = digitalRead(IR);
+        btnVal = digitalRead(inPin);
         
   if(detection == LOW){
+    if (btnVal == HIGH) {         
+             myServo.write(10);
+          }else { 
+             myServo.write(170);
+             delay(5000);//used delay to unlock the door for 5 sec until the open the door 
+             }
       // Look for new cards
     if ( ! mfrc522.PICC_IsNewCardPresent()) { 
       return;
