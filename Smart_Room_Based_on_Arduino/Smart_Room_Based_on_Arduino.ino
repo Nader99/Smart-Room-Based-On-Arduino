@@ -7,7 +7,7 @@
 #define RST_PIN   5
 #define SS_PIN    53
 #define Fan 9
-#define light 10
+#define light 13
 
 byte readCard[4];
 String myTags[100] = {};
@@ -18,7 +18,7 @@ boolean correctTag = false;
 int proximitySensor;
 boolean doorOpened = false;
 int detection = HIGH;
-int LED=13; 
+int LED=10; 
 int FLAME= A0;
 int BUZZER=4;
 int threshold=200;
@@ -26,6 +26,8 @@ int firevalue=0;
 int num = 0;
 int inPin = 11;   
 int btnVal = 0;
+int red=6;
+int green=2;
 
 DS3231 rtc(SDA, SCL);
 MFRC522 mfrc522(SS_PIN, RST_PIN);
@@ -43,6 +45,9 @@ void setup() {
   pinMode(FLAME,INPUT);
   pinMode(BUZZER,OUTPUT);
   pinMode(inPin, INPUT);
+  pinMode(green,OUTPUT);
+  pinMode(red,OUTPUT);
+  digitalWrite(red,HIGH);
   SPI.begin();  
   mfrc522.PCD_Init(); 
   lcd.begin(16, 2); 
@@ -149,6 +154,7 @@ void loop() {
         lcd.setCursor(0, 0);
         lcd.print(" Access Granted!");
         myServo.write(170); 
+        delay(2000);
         printMessage();
         correctTag = true;
       }
@@ -173,10 +179,10 @@ void loop() {
       detection = digitalRead(IR);
       if(detection == LOW){
         doorOpened = true;
+        delay(2000);
       }
     }
     doorOpened = false;
-    delay(500);
     myServo.write(10); 
     printMessage();
   }
@@ -228,15 +234,20 @@ void CountPll(){
       if ( num == 0){
         analogWrite(Fan,0);
         digitalWrite(light, LOW);
+        digitalWrite(green,LOW);
      }else if ( num <= 8 ){
         analogWrite(Fan,100);
         digitalWrite(light,HIGH);
+        digitalWrite(red,LOW);
+        digitalWrite(green,HIGH);
      }else if ( num <= 15){
         analogWrite(Fan,200);
         digitalWrite(light,HIGH);
+        digitalWrite(green,HIGH);
      }else if ( num > 15 ){
         analogWrite(Fan,255);
         digitalWrite(light,HIGH);
+        digitalWrite(green,HIGH);
        }
 }
 void printMessage() {
